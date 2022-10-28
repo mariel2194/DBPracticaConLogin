@@ -1,0 +1,532 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FacturacionProdGrupoo1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="CategoriaID" />
+          </Key>
+          <Property Name="CategoriaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+          </Key>
+          <Property Name="ClienteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Comercial" Type="varchar" MaxLength="255" />
+          <Property Name="RNC" Type="varchar" MaxLength="15" />
+          <Property Name="Cedula" Type="varchar" MaxLength="15" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="Telefono" Type="varchar" MaxLength="255" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="MetodoPagoID" Type="int" />
+        </EntityType>
+        <EntityType Name="Detalle">
+          <Key>
+            <PropertyRef Name="DetalleID" />
+          </Key>
+          <Property Name="DetalleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ProductoId" Type="int" />
+          <Property Name="FacturasID" Type="int" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="FacturasID" />
+          </Key>
+          <Property Name="FacturasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="VendedorId" Type="int" />
+          <Property Name="ClienteId" Type="int" />
+          <Property Name="MetodoPagoID" Type="int" />
+        </EntityType>
+        <EntityType Name="MetodoPago">
+          <Key>
+            <PropertyRef Name="MetodoPagoID" />
+          </Key>
+          <Property Name="MetodoPagoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="CantidadDias" Type="int" />
+          <Property Name="MonedaLocal" Type="bit" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="ProductoId" />
+          </Key>
+          <Property Name="ProductoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodigoUPC" Type="varchar" MaxLength="255" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+          <Property Name="Precio" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="Stock" Type="int" />
+          <Property Name="CategoriaID" Type="int" />
+        </EntityType>
+        <EntityType Name="Vendedores">
+          <Key>
+            <PropertyRef Name="VendedorId" />
+          </Key>
+          <Property Name="VendedorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="255" />
+          <Property Name="Apellido" Type="varchar" MaxLength="255" />
+          <Property Name="Cedula" Type="varchar" MaxLength="15" />
+          <Property Name="Salario" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="Telefono" Type="varchar" MaxLength="255" />
+          <Property Name="ComisionPorVenta" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <Association Name="FK__Clientes__Metodo__3B75D760">
+          <End Role="MetodoPago" Type="Self.MetodoPago" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetodoPago">
+              <PropertyRef Name="MetodoPagoID" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="MetodoPagoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Detalle__Factura__4AB81AF0">
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="0..1" />
+          <End Role="Detalle" Type="Self.Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas">
+              <PropertyRef Name="FacturasID" />
+            </Principal>
+            <Dependent Role="Detalle">
+              <PropertyRef Name="FacturasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Detalle__Product__49C3F6B7">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+          <End Role="Detalle" Type="Self.Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="Detalle">
+              <PropertyRef Name="ProductoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturas__Client__45F365D3">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteId" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturas__Metodo__46E78A0C">
+          <End Role="MetodoPago" Type="Self.MetodoPago" Multiplicity="0..1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetodoPago">
+              <PropertyRef Name="MetodoPagoID" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="MetodoPagoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturas__Vended__44FF419A">
+          <End Role="Vendedores" Type="Self.Vendedores" Multiplicity="0..1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendedores">
+              <PropertyRef Name="VendedorId" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="VendedorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Productos__Categ__403A8C7D">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="CategoriaID" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="CategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FacturacionProdGrupoo1ModelStoreContainer">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detalle" EntityType="Self.Detalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetodoPago" EntityType="Self.MetodoPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendedores" EntityType="Self.Vendedores" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Clientes__Metodo__3B75D760" Association="Self.FK__Clientes__Metodo__3B75D760">
+            <End Role="MetodoPago" EntitySet="MetodoPago" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Detalle__Factura__4AB81AF0" Association="Self.FK__Detalle__Factura__4AB81AF0">
+            <End Role="Facturas" EntitySet="Facturas" />
+            <End Role="Detalle" EntitySet="Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Detalle__Product__49C3F6B7" Association="Self.FK__Detalle__Product__49C3F6B7">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Detalle" EntitySet="Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturas__Client__45F365D3" Association="Self.FK__Facturas__Client__45F365D3">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturas__Metodo__46E78A0C" Association="Self.FK__Facturas__Metodo__46E78A0C">
+            <End Role="MetodoPago" EntitySet="MetodoPago" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturas__Vended__44FF419A" Association="Self.FK__Facturas__Vended__44FF419A">
+            <End Role="Vendedores" EntitySet="Vendedores" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Productos__Categ__403A8C7D" Association="Self.FK__Productos__Categ__403A8C7D">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FacturacionProdGrupoo1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="CategoriaID" />
+          </Key>
+          <Property Name="CategoriaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Productos__Categ__403A8C7D" FromRole="Categoria" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+          </Key>
+          <Property Name="ClienteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Comercial" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RNC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="MetodoPagoID" Type="Int32" />
+          <NavigationProperty Name="MetodoPago" Relationship="Self.FK__Clientes__Metodo__3B75D760" FromRole="Clientes" ToRole="MetodoPago" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK__Facturas__Client__45F365D3" FromRole="Clientes" ToRole="Facturas" />
+        </EntityType>
+        <EntityType Name="Detalle">
+          <Key>
+            <PropertyRef Name="DetalleID" />
+          </Key>
+          <Property Name="DetalleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ProductoId" Type="Int32" />
+          <Property Name="FacturasID" Type="Int32" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK__Detalle__Factura__4AB81AF0" FromRole="Detalle" ToRole="Facturas" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK__Detalle__Product__49C3F6B7" FromRole="Detalle" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="FacturasID" />
+          </Key>
+          <Property Name="FacturasID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" />
+          <Property Name="VendedorId" Type="Int32" />
+          <Property Name="ClienteId" Type="Int32" />
+          <Property Name="MetodoPagoID" Type="Int32" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Facturas__Client__45F365D3" FromRole="Facturas" ToRole="Clientes" />
+          <NavigationProperty Name="Detalle" Relationship="Self.FK__Detalle__Factura__4AB81AF0" FromRole="Facturas" ToRole="Detalle" />
+          <NavigationProperty Name="MetodoPago" Relationship="Self.FK__Facturas__Metodo__46E78A0C" FromRole="Facturas" ToRole="MetodoPago" />
+          <NavigationProperty Name="Vendedores" Relationship="Self.FK__Facturas__Vended__44FF419A" FromRole="Facturas" ToRole="Vendedores" />
+        </EntityType>
+        <EntityType Name="MetodoPago">
+          <Key>
+            <PropertyRef Name="MetodoPagoID" />
+          </Key>
+          <Property Name="MetodoPagoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CantidadDias" Type="Int32" />
+          <Property Name="MonedaLocal" Type="Boolean" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Clientes__Metodo__3B75D760" FromRole="MetodoPago" ToRole="Clientes" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK__Facturas__Metodo__46E78A0C" FromRole="MetodoPago" ToRole="Facturas" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="ProductoId" />
+          </Key>
+          <Property Name="ProductoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoUPC" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="Stock" Type="Int32" />
+          <Property Name="CategoriaID" Type="Int32" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK__Productos__Categ__403A8C7D" FromRole="Productos" ToRole="Categoria" />
+          <NavigationProperty Name="Detalle" Relationship="Self.FK__Detalle__Product__49C3F6B7" FromRole="Productos" ToRole="Detalle" />
+        </EntityType>
+        <EntityType Name="Vendedores">
+          <Key>
+            <PropertyRef Name="VendedorId" />
+          </Key>
+          <Property Name="VendedorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Salario" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ComisionPorVenta" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK__Facturas__Vended__44FF419A" FromRole="Vendedores" ToRole="Facturas" />
+        </EntityType>
+        <Association Name="FK__Productos__Categ__403A8C7D">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="0..1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="CategoriaID" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="CategoriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clientes__Metodo__3B75D760">
+          <End Role="MetodoPago" Type="Self.MetodoPago" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetodoPago">
+              <PropertyRef Name="MetodoPagoID" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="MetodoPagoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturas__Client__45F365D3">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteId" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Detalle__Factura__4AB81AF0">
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="0..1" />
+          <End Role="Detalle" Type="Self.Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas">
+              <PropertyRef Name="FacturasID" />
+            </Principal>
+            <Dependent Role="Detalle">
+              <PropertyRef Name="FacturasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Detalle__Product__49C3F6B7">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+          <End Role="Detalle" Type="Self.Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="Detalle">
+              <PropertyRef Name="ProductoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturas__Metodo__46E78A0C">
+          <End Role="MetodoPago" Type="Self.MetodoPago" Multiplicity="0..1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MetodoPago">
+              <PropertyRef Name="MetodoPagoID" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="MetodoPagoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facturas__Vended__44FF419A">
+          <End Role="Vendedores" Type="Self.Vendedores" Multiplicity="0..1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendedores">
+              <PropertyRef Name="VendedorId" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="VendedorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FacturacionProdGrupoo1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="Detalle" EntityType="Self.Detalle" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" />
+          <EntitySet Name="MetodoPago" EntityType="Self.MetodoPago" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <EntitySet Name="Vendedores" EntityType="Self.Vendedores" />
+          <AssociationSet Name="FK__Productos__Categ__403A8C7D" Association="Self.FK__Productos__Categ__403A8C7D">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clientes__Metodo__3B75D760" Association="Self.FK__Clientes__Metodo__3B75D760">
+            <End Role="MetodoPago" EntitySet="MetodoPago" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturas__Client__45F365D3" Association="Self.FK__Facturas__Client__45F365D3">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Detalle__Factura__4AB81AF0" Association="Self.FK__Detalle__Factura__4AB81AF0">
+            <End Role="Facturas" EntitySet="Facturas" />
+            <End Role="Detalle" EntitySet="Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Detalle__Product__49C3F6B7" Association="Self.FK__Detalle__Product__49C3F6B7">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Detalle" EntitySet="Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturas__Metodo__46E78A0C" Association="Self.FK__Facturas__Metodo__46E78A0C">
+            <End Role="MetodoPago" EntitySet="MetodoPago" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facturas__Vended__44FF419A" Association="Self.FK__Facturas__Vended__44FF419A">
+            <End Role="Vendedores" EntitySet="Vendedores" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FacturacionProdGrupoo1ModelStoreContainer" CdmEntityContainer="FacturacionProdGrupoo1Entities">
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="FacturacionProdGrupoo1Model.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="FacturacionProdGrupoo1Model.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="Nombre_Comercial" ColumnName="Nombre_Comercial" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="MetodoPagoID" ColumnName="MetodoPagoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Detalle">
+            <EntityTypeMapping TypeName="FacturacionProdGrupoo1Model.Detalle">
+              <MappingFragment StoreEntitySet="Detalle">
+                <ScalarProperty Name="DetalleID" ColumnName="DetalleID" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="ProductoId" ColumnName="ProductoId" />
+                <ScalarProperty Name="FacturasID" ColumnName="FacturasID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas">
+            <EntityTypeMapping TypeName="FacturacionProdGrupoo1Model.Facturas">
+              <MappingFragment StoreEntitySet="Facturas">
+                <ScalarProperty Name="FacturasID" ColumnName="FacturasID" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="VendedorId" ColumnName="VendedorId" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="MetodoPagoID" ColumnName="MetodoPagoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetodoPago">
+            <EntityTypeMapping TypeName="FacturacionProdGrupoo1Model.MetodoPago">
+              <MappingFragment StoreEntitySet="MetodoPago">
+                <ScalarProperty Name="MetodoPagoID" ColumnName="MetodoPagoID" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CantidadDias" ColumnName="CantidadDias" />
+                <ScalarProperty Name="MonedaLocal" ColumnName="MonedaLocal" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="FacturacionProdGrupoo1Model.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="ProductoId" ColumnName="ProductoId" />
+                <ScalarProperty Name="CodigoUPC" ColumnName="CodigoUPC" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="CategoriaID" ColumnName="CategoriaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendedores">
+            <EntityTypeMapping TypeName="FacturacionProdGrupoo1Model.Vendedores">
+              <MappingFragment StoreEntitySet="Vendedores">
+                <ScalarProperty Name="VendedorId" ColumnName="VendedorId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="ComisionPorVenta" ColumnName="ComisionPorVenta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

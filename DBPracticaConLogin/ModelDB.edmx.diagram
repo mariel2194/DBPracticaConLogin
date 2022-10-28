@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8b61ec8b13d44af0ad7ba28f46007d44" Name="Diagram1">
+        <EntityTypeShape EntityType="FacturacionProdGrupooModel.Categoria" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacturacionProdGrupooModel.Clientes" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacturacionProdGrupooModel.Detalle" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacturacionProdGrupooModel.Facturas" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacturacionProdGrupooModel.MetodoPago" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacturacionProdGrupooModel.Productos" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacturacionProdGrupooModel.Vendedores" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="FacturacionProdGrupooModel.FK__Productos__Categ__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="FacturacionProdGrupooModel.FK__Clientes__Metodo__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="FacturacionProdGrupooModel.FK__Facturas__Client__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="FacturacionProdGrupooModel.FK__Detalle__Factura__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="FacturacionProdGrupooModel.FK__Detalle__Product__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="FacturacionProdGrupooModel.FK__Facturas__Metodo__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="FacturacionProdGrupooModel.FK__Facturas__Vended__44FF419A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
