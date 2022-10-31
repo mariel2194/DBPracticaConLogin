@@ -4,18 +4,30 @@
     ViewBag.Title = "Index";
 }
 
+
 <div class="custom">
     <h2>Registro de Productos</h2>
     <br />
 
-
-
     <div class="btn-text-left">
-        <button type="button" class="btn"> @Html.ActionLink("Create New", "Create")</button>
+        <button type="button" class="btn btn-primary">
+            @Html.ActionLink("Create New", "Create")
+        </button>
+    </div>
+    <br />
+    <div>
+        <form class="d-flex">
+            <input class="form-control me-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
     </div>
 
+    
+
     <br />
+
     <table class="table">
+
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.CodigoUPC)

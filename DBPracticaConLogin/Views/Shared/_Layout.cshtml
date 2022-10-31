@@ -16,30 +16,11 @@
     @Scripts.Render("~/bundles/modernizr")
 
 
-    <!-- GOOGLE FONTS -->
-    <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Roboto" rel="stylesheet">
-    <link href="~/Content/plugins/material/materialdesignicons.min.css" rel="stylesheet" />
-    <link href="~/Content/plugins/simplebar/simplebar.css" rel="stylesheet" />
+   
 
-
-    <!-- PLUGINS CSS STYLE -->
-    <link href="plugins/nprogress/nprogress.css" rel="stylesheet" />
-    <link href="plugins/daterangepicker/daterangepicker.css" rel="stylesheet" />
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <link href="plugins/toaster/toastr.min.css" rel="stylesheet" />
-    <!-- MONO CSS -->
-    <link id="main-css-href" rel="stylesheet" href="css/style.css" />
-
-    <!-- FAVICON -->
-    <link href="~/Content/images/" rel="shortcut icon" />
-
-    <script src="~/Content/plugins/nprogress/nprogress.js"></script>
-    <link href="~/Content/fontawesome/css/all.min.css" rel="stylesheet">
-    <link href="~/Content/style.css" rel="stylesheet" />
-    <link href="~/Content/fontawesome/css/fontawesome.min.css" rel="stylesheet">
-    <link href="~/Content/fontawesome/webfont/fa-solid-900.ttf" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
 
 
 </head>
@@ -103,13 +84,7 @@
 
                     <div class="sidebar-footer">
                         <div class="sidebar-footer-content">
-                            <ul class="d-flex">
-
-                                <a href="#" data-toggle="tooltip" title="No chat messages">
-                                    <i class="mdi mdi-chat-processing"></i>
-                                </a>
-
-                            </ul>
+                            
                         </div>
                     </div>
                 </div>
@@ -125,25 +100,39 @@
 
             <!-- Header -->
             <header class="main-header" id="header">
-                <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
-                    <!-- Sidebar toggle button -->
-
-
-                    <span class="page-title" id="sidebar-toggler" style="margin-left:25px;">
-                        <i class="bi bi-boxes radio">
-
-                        </i> FACTURACION DE ARTICULOS | REGISTRY
-                    </span>
-                    <div class="navbar-right">
-                        @Html.Partial("_LoginPartial")
+                <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">Navbar</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarColor01">
+                            <ul class="navbar-nav me-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#">
+                                        Home
+                                        <span class="visually-hidden">(current)</span>
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Separated link</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <form class="d-flex">
+                                <input class="form-control me-sm-2" type="text" placeholder="Search">
+                                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                            </form>
+                        </div>
                     </div>
-
-
-                    <ul class="nav navbar-nav">
-                    </ul>
-
                 </nav>
-                
             </header>
 
         </div>
@@ -193,31 +182,8 @@
 
 
 
-@*<div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
                 @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>*@
+         
 
 
 @Scripts.Render("~/bundles/jquery")
