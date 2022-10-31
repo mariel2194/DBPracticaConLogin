@@ -236,6 +236,38 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <None Include="Content\style.css.map" />
+    <Content Include="Content\fontawesome\css\all.css" />
+    <Content Include="Content\fontawesome\css\all.min.css" />
+    <Content Include="Content\fontawesome\css\brands.css" />
+    <Content Include="Content\fontawesome\css\brands.min.css" />
+    <Content Include="Content\fontawesome\css\fontawesome.css" />
+    <Content Include="Content\fontawesome\css\fontawesome.min.css" />
+    <Content Include="Content\fontawesome\css\regular.css" />
+    <Content Include="Content\fontawesome\css\regular.min.css" />
+    <Content Include="Content\fontawesome\css\solid.css" />
+    <Content Include="Content\fontawesome\css\solid.min.css" />
+    <Content Include="Content\fontawesome\css\svg-with-js.css" />
+    <Content Include="Content\fontawesome\css\svg-with-js.min.css" />
+    <Content Include="Content\fontawesome\css\v4-font-face.css" />
+    <Content Include="Content\fontawesome\css\v4-font-face.min.css" />
+    <Content Include="Content\fontawesome\css\v4-shims.css" />
+    <Content Include="Content\fontawesome\css\v4-shims.min.css" />
+    <Content Include="Content\fontawesome\css\v5-font-face.css" />
+    <Content Include="Content\fontawesome\css\v5-font-face.min.css" />
+    <Content Include="Content\fontawesome\js\all.js" />
+    <Content Include="Content\fontawesome\js\all.min.js" />
+    <Content Include="Content\fontawesome\js\brands.js" />
+    <Content Include="Content\fontawesome\js\brands.min.js" />
+    <Content Include="Content\fontawesome\js\conflict-detection.js" />
+    <Content Include="Content\fontawesome\js\conflict-detection.min.js" />
+    <Content Include="Content\fontawesome\js\fontawesome.js" />
+    <Content Include="Content\fontawesome\js\fontawesome.min.js" />
+    <Content Include="Content\fontawesome\js\regular.js" />
+    <Content Include="Content\fontawesome\js\regular.min.js" />
+    <Content Include="Content\fontawesome\js\solid.js" />
+    <Content Include="Content\fontawesome\js\solid.min.js" />
+    <Content Include="Content\fontawesome\js\v4-shims.js" />
+    <Content Include="Content\fontawesome\js\v4-shims.min.js" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -347,6 +379,7 @@
     <Content Include="Views\Vendedores\Details.cshtml" />
     <Content Include="Views\Vendedores\Edit.cshtml" />
     <Content Include="Views\Vendedores\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DBPracticaConLogin
+namespace DBPracticaConLoginSearchYList
 {
     using System;
     using System.Data.Entity;

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace DBPracticaConLogin.Models
+namespace DBPracticaConLoginSearchYList.Models
 {
     public class IndexViewModel
     {

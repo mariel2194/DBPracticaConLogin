@@ -8,9 +8,10 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using DBPracticaConLogin.Models;
+using DBPracticaConLoginSearchYList.Models;
 
-namespace DBPracticaConLogin.Controllers
+
+namespace DBPracticaConLoginSearchYList.Controllers
 {
     [Authorize]
     public class AccountController : Controller
@@ -59,6 +60,7 @@ namespace DBPracticaConLogin.Controllers
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
+
         }
 
         //
@@ -70,6 +72,9 @@ namespace DBPracticaConLogin.Controllers
         {
             if (!ModelState.IsValid)
             {
+                
+                
+                //wrapper.Visible = false;
                 return View(model);
             }
 

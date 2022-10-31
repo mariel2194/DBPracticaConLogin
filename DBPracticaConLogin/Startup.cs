@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(DBPracticaConLogin.Startup))]
-namespace DBPracticaConLogin
+[assembly: OwinStartupAttribute(typeof(DBPracticaConLoginSearchYList.Startup))]
+namespace DBPracticaConLoginSearchYList
 {
     public partial class Startup
     {

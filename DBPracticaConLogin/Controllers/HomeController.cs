@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace DBPracticaConLogin.Controllers
+namespace DBPracticaConLoginSearchYList.Controllers
 {
     public class HomeController : Controller
     {

@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using DBPracticaConLogin.Models;
+using DBPracticaConLoginSearchYList.Models;
 
-namespace DBPracticaConLogin
+namespace DBPracticaConLoginSearchYList
 {
     public class EmailService : IIdentityMessageService
     {

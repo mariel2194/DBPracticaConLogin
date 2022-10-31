@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBPracticaConLogin", "DBPracticaConLogin\DBPracticaConLogin.csproj", "{FD2BEF50-E5C5-44C1-B7B9-9635084FA3C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBPracticaConLoginSearchYList", "DBPracticaConLogin\DBPracticaConLoginSearchYList.csproj", "{FD2BEF50-E5C5-44C1-B7B9-9635084FA3C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

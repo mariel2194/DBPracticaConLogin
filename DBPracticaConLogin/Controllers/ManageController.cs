@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using DBPracticaConLogin.Models;
+using DBPracticaConLoginSearchYList.Models;
 
-namespace DBPracticaConLogin.Controllers
+namespace DBPracticaConLoginSearchYList.Controllers
 {
     [Authorize]
     public class ManageController : Controller

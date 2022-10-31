@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using DBPracticaConLogin.Models;
+using DBPracticaConLoginSearchYList.Models;
 
-namespace DBPracticaConLogin
+namespace DBPracticaConLoginSearchYList
 {
     public partial class Startup
     {

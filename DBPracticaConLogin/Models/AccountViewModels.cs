@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace DBPracticaConLogin.Models
+namespace DBPracticaConLoginSearchYList.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

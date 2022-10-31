@@ -1,3 +1,21 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@*@{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }*@
+
+@{
+    string cLayout = "";
+    if (ViewContext.RouteData.Values["controller"].ToString() == "Account")
+    //use this in order to locate the route controller called account where the login is allocated, then
+    //create a differen layout for this to hide the aside nav bar
+    {
+       
+     
+                cLayout = "~/Views/Shared/_Layout1.cshtml";
+
+                }
+                else
+                {
+                cLayout = "~/Views/Shared/_Layout.cshtml";
+                }
+                Layout = cLayout;
+                }
