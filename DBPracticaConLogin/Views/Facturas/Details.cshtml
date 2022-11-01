@@ -4,47 +4,51 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="custom">
+    <h2>Detalles del Producto</h2>
+    <br />
 
-<div>
-    <h4>Facturas</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Fecha)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fecha)
-        </dd>
+    <div>
+        <h4>Facturas</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Clientes.Nombre_Comercial)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Fecha)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Clientes.Nombre_Comercial)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Clientes.Nombre_Comercial)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MetodoPago.Descripcion)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Clientes.Nombre_Comercial)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.MetodoPago.Descripcion)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MetodoPago.Descripcion)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Vendedores.Nombre)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MetodoPago.Descripcion)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Vendedores.Nombre)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Vendedores.Nombre)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.Vendedores.Nombre)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.FacturasID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.FacturasID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

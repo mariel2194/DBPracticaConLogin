@@ -4,48 +4,66 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CantidadDias)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MonedaLocal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Activo)
-        </th>
-        <th></th>
-    </tr>
+<div class="custom">
+    <h2>Registro de Condiciones de Pago</h2>
+    <br />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CantidadDias)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MonedaLocal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Activo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MetodoPagoID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MetodoPagoID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MetodoPagoID })
-        </td>
-    </tr>
-}
+    <div class="btn-text-left">
+        <button type="button" class="btn btn-primary">
+            @Html.ActionLink("Agregar Nuevo", "Create")
+        </button>
+    </div>
+    <br />
+    <div>
+        <form class="d-flex">
+            <input class="form-control me-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
 
-</table>
+
+
+    <br />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadDias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MonedaLocal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activo)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantidadDias)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MonedaLocal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Activo)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.MetodoPagoID }) |
+                    @Html.ActionLink("Ver Detalles", "Details", new { id = item.MetodoPagoID }) |
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.MetodoPagoID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

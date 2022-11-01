@@ -5,16 +5,26 @@
 }
 
 <div class="custom">
-    <h2>Gestión de Facturas</h2>
+    <h2>Gestion de Facturas</h2>
     <br />
 
-
-
+    <div class="btn-text-left">
+        <button type="button" class="btn btn-primary">
+            @Html.ActionLink("Agregar Vendedores New", "Agregar Vendedores")
+        </button>
+    </div>
+    <br />
     <div>
-        <button type="button" class="btn"> @Html.ActionLink("Agregar Nuevas Facturas", "Create")</button>
+        <form class="d-flex">
+            <input class="form-control me-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
     </div>
 
+
+
     <br />
+
 
     <table class="table">
         <tr>
