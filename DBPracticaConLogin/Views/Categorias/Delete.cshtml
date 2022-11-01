@@ -4,10 +4,13 @@
     ViewBag.Title = "Borrar";
 }
 
-<h2>Borrar</h2>
+<div class="custom">
+   
 
-<h3>Desea eliminar este registro?</h3>
-<div>
+
+
+    <br />
+    <h3>Desea borrar estos registros?</h3>
     <h4>Categoria</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -21,12 +24,13 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Borrar" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<p>
+    <input type="submit" value="Borrar" class="btn btn-default" /> | |
+    @Html.ActionLink("Back to List", "Index")
+</p>
     }
 </div>
