@@ -15,11 +15,17 @@ namespace DBPracticaConLoginSearchYList.Controllers
         private FacturacionProdGrupooEntities db = new FacturacionProdGrupooEntities();
 
         // GET: Productos
-        public ActionResult Index()
+        public ActionResult Index(string Criterio = null)
         {
-            var productos = db.Productos.Include(p => p.Categoria);
-            return View(productos.ToList());
+
+            return View(db.Productos.Where(p => Criterio == null || p.Descripcion.StartsWith(Criterio) ||
+            p.Precio.ToString().StartsWith(Criterio)
+            || p.Categoria.Descripcion.StartsWith(Criterio)         
+            || p.CodigoUPC.StartsWith(Criterio)).ToList());
         }
+            //var productos = db.Productos.Include(p => p.Categoria);
+            //return View(productos.ToList());
+        
 
         // GET: Productos/Details/5
         public ActionResult Details(int? id)
