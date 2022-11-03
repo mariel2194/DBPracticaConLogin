@@ -11,7 +11,7 @@
 
     <div class="btn-text-left">
         <button type="button" class="btn btn-primary">
-            @Html.ActionLink("Agregar Vendedores New", "Agregar Vendedores")
+            @Html.ActionLink("Agrega Nuevo", "Create")
         </button>
     </div>
     <br />
@@ -72,8 +72,8 @@
                     @Html.DisplayFor(modelItem => item.Categoria.Descripcion)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductoId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ProductoId }) |
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ProductoId }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.ProductoId }) |
                     @Html.ActionLink("Borrar", "Borrar", new { id = item.ProductoId })
                 </td>
             </tr>
