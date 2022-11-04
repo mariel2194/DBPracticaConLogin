@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace DBPracticaConLoginSearchYList
 {
     using System;
@@ -33,3 +35,6 @@ namespace DBPracticaConLoginSearchYList
         public virtual Vendedores Vendedores { get; set; }
     }
 }
+
+//agrega fecha[DataType(DataType.Date)]
+//        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

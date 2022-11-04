@@ -15,10 +15,13 @@ namespace DBPracticaConLoginSearchYList.Controllers
         private FacturacionProdGrupooEntities db = new FacturacionProdGrupooEntities();
 
         // GET: Categorias
-        public ActionResult Index()
+        public ActionResult Index(string Criterio = null)
         {
-            return View(db.Categoria.ToList());
+
+            return View(db.Categoria.Where(p => Criterio == null || p.Descripcion.StartsWith(Criterio)).ToList());
         }
+        //var productos = db.Productos.Include(p => p.Categoria);
+        //return View(productos.ToList());
 
         // GET: Categorias/Details/5
         public ActionResult Details(int? id)
