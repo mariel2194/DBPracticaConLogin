@@ -45,6 +45,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
 
         // GET: Productos/Create
         [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Descripcion");
@@ -72,6 +73,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
 
         // GET: Productos/Edit/5
         [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -106,6 +108,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
 
         // GET: Productos/Delete/5
         [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

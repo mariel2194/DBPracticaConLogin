@@ -40,6 +40,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
 
         // GET: Vendedores/Create
         [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
@@ -63,6 +64,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
         }
 
         // GET: Vendedores/Edit/5
+        [Authorize(Roles = "Administrator")]
         [Authorize]
         public ActionResult Edit(int? id)
         {
@@ -96,6 +98,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
 
         // GET: Vendedores/Delete/5
         [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
