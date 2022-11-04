@@ -1899,13 +1899,8 @@ pre {
     bottom: 0px;
     margin-top: 0px;
     top: 150px;
-    width: 100%;
+    width: 80%;
     height: 100%;
-
-}
-
-a.custom {
-    text-decoration:none;
 }
 
 .custom-edit {
@@ -2339,8 +2334,8 @@ a.custom {
     font-weight: 400;
     line-height: 1.5;
     color: #495057;
-/*    background-color: #ffffff;
-*/    background-clip: padding-box;
+    background-color: #ffffff;
+    background-clip: padding-box;
     border: 1px solid #e5e9f2;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -2359,8 +2354,8 @@ a.custom {
 
 .form-control:focus {
     color: #495057;
-/*    background-color: #ffffff;
-*/    border-color: #e4d6f6;
+    background-color: #ffffff;
+    border-color: #e4d6f6;
     outline: 0;
     box-shadow: 0 0 0 0.2rem transparent;
 }
