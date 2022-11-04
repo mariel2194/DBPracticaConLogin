@@ -2391,7 +2391,7 @@ select.form-control:-moz-focusring {
 
 select.form-control:focus::-ms-value {
     color: #495057;
-    background-color: #ffffff;
+    background-color: #495057; 
 }
 
 .form-control-file,

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using DBPracticaConLoginSearchYList;
 
 namespace DBPracticaConLoginSearchYList.Controllers
@@ -123,5 +124,36 @@ namespace DBPracticaConLoginSearchYList.Controllers
             }
             base.Dispose(disposing);
         }
-    }
+        //public ActionResult SelectComision()
+        //{
+        //    List<SelectListItem> items = new List<SelectListItem>();
+        //    {
+        //        items.Add(new SelectListItem { Text = "Action", Value = "0" });
+
+        //        items.Add(new SelectListItem { Text = "Drama", Value = "1" });
+
+        //        items.Add(new SelectListItem { Text = "Comedy", Value = "2", Selected = true });
+
+        //        items.Add(new SelectListItem { Text = "Science Fiction", Value = "3" });
+
+        //        ViewBag.Vendedores = items;
+
+        //        return View();
+
+
+        //        //new SelectListItem{ Text="Seleccione por ciento de ventas", Value = "" },
+        //        //     new SelectListItem{ Text="3%", Value = "3" },
+        //        //     new SelectListItem{ Text="5%", Value = "5" },
+        //        //     new SelectListItem{ Text="15%", Value = "15" },
+        //        //     new SelectListItem{ Text="20%", Value = "0" }
+
+
+
+
+        //    }
+        
+
+
+
+        }
 }

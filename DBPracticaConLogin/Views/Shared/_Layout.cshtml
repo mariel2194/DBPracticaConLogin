@@ -113,15 +113,17 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarColor01">
+                            <span class="dropdown-item">@Html.ActionLink("Usuario " + User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</span>
 
                             <div class="navbar-right">
+
                                 <ul class="navbar-nav me-auto nav nav-pills">
 
                                     <li class="nav-item dropdown" style="margin-right:150px;">
                                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Configuracion</a>
                                         <div class="dropdown-menu" style="margin-right: 550px; padding: 20px; width: 300px;">
+                                            @Html.Partial("_LoginPartial")
 
-                                            <span class="dropdown-item">@Html.ActionLink("Usuario " + User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</span>
 
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesion</a>
@@ -177,7 +179,7 @@
 
 
 
-@Html.Partial("_LoginPartial")
+
 
 
 @RenderSection("scripts", required: false)
