@@ -11,7 +11,8 @@ namespace DBPracticaConLoginSearchYList
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Productos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +22,18 @@ namespace DBPracticaConLoginSearchYList
         }
     
         public int ProductoId { get; set; }
+        [Display(Name = "Codigo UPC")]
         public string CodigoUPC { get; set; }
+        [Required(ErrorMessage = "El nombre de producto es obligatorio")]
+
         public string Descripcion { get; set; }
+        [Required(ErrorMessage = "El precio es obligatorio")]
+        [DataType(DataType.Currency)]
+
         public Nullable<decimal> Precio { get; set; }
         public Nullable<bool> Activo { get; set; }
+        [Required(ErrorMessage = "El stock es obligatorio")]
+
         public Nullable<int> Stock { get; set; }
         public Nullable<int> CategoriaID { get; set; }
     

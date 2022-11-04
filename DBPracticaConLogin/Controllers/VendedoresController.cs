@@ -16,12 +16,14 @@ namespace DBPracticaConLoginSearchYList.Controllers
         private FacturacionProdGrupooEntities db = new FacturacionProdGrupooEntities();
 
         // GET: Vendedores
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Vendedores.ToList());
         }
 
         // GET: Vendedores/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
         }
 
         // GET: Vendedores/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -60,6 +63,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
         }
 
         // GET: Vendedores/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -91,6 +95,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
         }
 
         // GET: Vendedores/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)

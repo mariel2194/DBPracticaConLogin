@@ -15,6 +15,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
         private FacturacionProdGrupooEntities db = new FacturacionProdGrupooEntities();
 
         // GET: Productos
+        [Authorize]
         public ActionResult Index(string Criterio = null)
         {
 
@@ -43,6 +44,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
         }
 
         // GET: Productos/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.CategoriaID = new SelectList(db.Categoria, "CategoriaID", "Descripcion");
@@ -52,6 +54,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
         // POST: Productos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductoId,CodigoUPC,Descripcion,Precio,Activo,Stock,CategoriaID")] Productos productos)
@@ -68,6 +71,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
         }
 
         // GET: Productos/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -101,6 +105,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
         }
 
         // GET: Productos/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)

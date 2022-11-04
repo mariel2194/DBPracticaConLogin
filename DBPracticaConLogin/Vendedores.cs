@@ -11,7 +11,8 @@ namespace DBPracticaConLoginSearchYList
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Vendedores
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,9 @@ namespace DBPracticaConLoginSearchYList
         }
     
         public int VendedorId { get; set; }
+        [Required(ErrorMessage = "El nombre es obligatorio")]
         public string Nombre { get; set; }
+        [Required(ErrorMessage = "El Apellido es obligatorio")]
         public string Apellido { get; set; }
         public string Cedula { get; set; }
         public Nullable<decimal> Salario { get; set; }
