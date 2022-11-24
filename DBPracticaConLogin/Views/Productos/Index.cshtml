@@ -8,28 +8,39 @@
 
 <div class="custom">
     <h2>Registro de Productos</h2>
-    <br />
 
-    <div class="btn-text-left">
-        <button type="button" class="btn btn-primary">
-            @Html.ActionLink("Agrega Nuevo", "Create")
-        </button>
-    </div>
-    <br />
     <div>
-        <form class="d-flex" method="get">
+        <form class="d-flex" method="get" style="width:350px;">
             <input class="form-control me-sm-2" type="text" placeholder="Search" id="Criterio" name="Criterio">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="buscar">Buscar</button>
         </form>
     </div>
-
-
-
+    <br />
     <br />
 
+    <div>
+        <div class="btn-text-left">
+            <button type="button" class="btn btn-primary">
+                @Html.ActionLink("Agrega Nuevo", "Create")
+            </button>
+        </div>
+        <br />
+        <div class="btn-text-right">
+            <button type="button" class="btn btn-primary">
+                @Html.ActionLink("Exportar a Excel", "exportaExcel")
+            </button>
+        </div>
+    </div>
+    
+    <br />
+    <br />
     <table class="table">
 
         <tr>
+            <th>
+                Select All
+                /None
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.CodigoUPC)
             </th>
@@ -54,6 +65,10 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    <input id="Checkbox1" class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.CodigoUPC)
                 </td>
@@ -80,20 +95,20 @@
                         {
                             <button type="button" class="btn btn-primary">
                                 @Html.ActionLink("Editar", "Edit", new { id = item.ProductoId })
-                            </button> <span>||</span>
-                                      <button type="button" class="btn btn-primary">
-                                          @Html.ActionLink("Borrar", "Borrar", new { id = item.ProductoId })
-                                      </button>
-                                }
-                                }
-                               
-                                <button type="button" class="btn btn-primary">
-                                    @Html.ActionLink("Detalles", "Details", new { id = item.ProductoId })
-                                </button>
-                        </td>
+                            </button> <span></span>
+                            <button type="button" class="btn btn-primary">
+                                @Html.ActionLink("Borrar", "Borrar", new { id = item.ProductoId })
+                            </button>
+                        }
+                    }
+
+                    <button type="button" class="btn btn-primary">
+                        @Html.ActionLink("Detalles", "Details", new { id = item.ProductoId })
+                    </button>
+                </td>
             </tr>
         }
-    
+
     </table>
 </div>
 

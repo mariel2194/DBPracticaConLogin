@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -141,6 +142,42 @@ namespace DBPracticaConLoginSearchYList.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+       
+        
+        
+        }
+        public ActionResult exportaExcel()
+        {
+
+            string filename = "productos.csv";
+            string filepath = @"c:\tmp\" + filename;
+            StreamWriter sw = new StreamWriter(filepath);
+            sw.WriteLine("sep=,"); //separador columnas 
+            sw.WriteLine("ID, Descripcion, Estado, Label UPC, Precio, Stock, Categoria"); //Encabezado  
+
+            foreach (var i in db.Productos.ToList())            {
+
+                sw.WriteLine(i.ProductoId.ToString() + "," + i.Descripcion + "," + i.Activo + "," + i.CodigoUPC + "," + i.Precio + "," + i.Stock + "," + i.Categoria.Descripcion);
+
+            }
+
+            sw.Close();
+            byte[] filedata = System.IO.File.ReadAllBytes(filepath);
+            string contentType = MimeMapping.GetMimeMapping(filepath);
+            
+            var cd = new System.Net.Mime.ContentDisposition
+
+            {
+
+                FileName = filename,
+                Inline = true,
+
+            };
+            Response.AppendHeader("Content-Disposition", cd.ToString());
+            return File(filedata, contentType);
+
         }
     }
+
+
 }
