@@ -1,51 +1,98 @@
 ﻿@model IEnumerable<DBPracticaConLoginSearchYList.Detalle>
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="custom">
+    <h2>Registro de Productos</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Cantidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Precio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Facturas.FacturasID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Productos.CodigoUPC)
-        </th>
-        <th></th>
-    </tr>
+    <div>
+        <form class="d-flex" method="get" style="width:350px;">
+            <input class="form-control me-sm-2" type="text" placeholder="Search" id="Criterio" name="Criterio">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="buscar">Buscar</button>
+        </form>
+    </div>
+    <br />
+    <br />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cantidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Precio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Facturas.FacturasID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Productos.CodigoUPC)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DetalleID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DetalleID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DetalleID })
-        </td>
-    </tr>
+    <div>
+        <div class="btn-text-left">
+            <button type="button" class="btn btn-primary">
+                @Html.ActionLink("Agrega Nuevo", "Create")
+            </button>
+        </div>
+        <br />
+        <div class="btn-text-right">
+            <button type="button" class="btn btn-primary">
+                @Html.ActionLink("Exportar a Excel", "exportaExcel")
+            </button>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <table class="table">
+        <tr>
+            <th>
+                Select All
+                /None
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Facturas.FacturasID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Productos.CodigoUPC)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Facturas.FacturasID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Productos.CodigoUPC)
+            </td>
+            <td>
+                @if (User.Identity.IsAuthenticated)
+                   {
+                    if (User.IsInRole("Administrator"))//Check wether the user is in that role
+                        {
+                <button type="button" class="btn btn-primary">
+                    @Html.ActionLink("Edit", "Edit", new { id=item.DetalleID })
+                </button>  <span></span>
+                           <button type="button" class="btn btn-primary">
+                               @Html.ActionLink("Borrar", "Delete", new { id=item.DetalleID })
+                           </button>
+                        }
+                    }
+
+            <button type="button" class="btn btn-primary">
+                @Html.ActionLink("Detalles", "Details", new { id=item.DetalleID })
+            </button>
+
+                
+            </td>
+        </tr>
 }
 
-</table>
+    </table>
+</div>

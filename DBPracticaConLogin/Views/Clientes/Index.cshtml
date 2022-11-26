@@ -8,24 +8,37 @@
     <h2>Registro de Clientes</h2>
     <br />
 
-    <div class="btn-text-left">
-        <button type="button" class="btn btn-primary">
-            @Html.ActionLink("Agregar Nuevo", "Create")
-        </button>
-    </div>
-    <br />
     <div>
-        <form class="d-flex">
+        <form class="d-flex" method="get" style="width:350px;">
             <input class="form-control me-sm-2" type="text" placeholder="Search" id="Criterio" name="Criterio">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit"id="buscar">Search</button>
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="buscar">Buscar</button>
         </form>
     </div>
+    <br />
+    <br />
 
-
+    <div>
+        <div class="btn-text-left">
+            <button type="button" class="btn btn-primary">
+                @Html.ActionLink("Agrega Nuevo", "Create")
+            </button>
+        </div>
+        <br />
+        <div class="btn-text-right">
+            <button type="button" class="btn btn-primary">
+                @Html.ActionLink("Exportar a Excel", "exportaExcel")
+            </button>
+        </div>
+    </div>
 
     <br />
     <table class="table">
         <tr>
+            <th>
+                Select All
+                /None
+            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Nombre_Comercial)
             </th>
@@ -52,34 +65,51 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nombre_Comercial)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RNC)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cedula)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telefono)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Activo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MetodoPago.Descripcion)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ClienteId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ClienteId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ClienteId })
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_Comercial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RNC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetodoPago.Descripcion)
+            </td>
+            <td>
+                @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Administrator"))//Check wether the user is in that role
+                        {
+                <button type="button" class="btn btn-primary">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ClienteId })
+                </button> 
+                           <button type="button" class="btn btn-primary">
+                               @Html.ActionLink("Delete", "Delete", new { id = item.ClienteId })
+                           </button>
+                        }
+                    }
+
+            <button type="button" class="btn btn-primary">
+                @Html.ActionLink("Detalles", "Details", new { id = item.ClienteId })
+            </button>
+                 
+            </td>
+        </tr>
         }
 
     </table>
