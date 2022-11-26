@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<DBPracticaConLoginSearchYList.MetodoPago>
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Index";
@@ -9,24 +10,37 @@
     <h2>Registro de Condiciones de Pago</h2>
     <br />
 
-    <div class="btn-text-left">
-        <button type="button" class="btn btn-primary">
-            @Html.ActionLink("Agregar Nuevo", "Create")
-        </button>
-    </div>
-    <br />
     <div>
-        <form class="d-flex">
+        <form class="d-flex" method="get" style="width:350px;">
             <input class="form-control me-sm-2" type="text" placeholder="Search" id="Criterio" name="Criterio">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="buscar">Search</button>
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit" id="buscar">Buscar</button>
         </form>
     </div>
+    <br />
+    <br />
 
+    <div>
+        <div class="btn-text-left">
+            <button type="button" class="btn btn-primary">
+                @Html.ActionLink("Agrega Nuevo", "Create")
+            </button>
+        </div>
+        <br />
+        <div class="btn-text-right">
+            <button type="button" class="btn btn-primary">
+                @Html.ActionLink("Exportar a Excel", "exportaExcel")
+            </button>
+        </div>
+    </div>
 
-
+    <br />
     <br />
     <table class="table">
         <tr>
+            <th>
+                Select All
+                /None
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Descripcion)
             </th>
@@ -46,6 +60,10 @@
         {
             <tr>
                 <td>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                </td>
+
+                <td>
                     @Html.DisplayFor(modelItem => item.Descripcion)
                 </td>
                 <td>
@@ -58,9 +76,25 @@
                     @Html.DisplayFor(modelItem => item.Activo)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.MetodoPagoID }) |
-                    @Html.ActionLink("Ver Detalles", "Details", new { id = item.MetodoPagoID }) |
-                    @Html.ActionLink("Borrar", "Delete", new { id = item.MetodoPagoID })
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Administrator"))//Check wether the user is in that role
+                        {
+                            <button type="button" class="btn btn-primary">
+                                @Html.ActionLink("Editar", "Edit", new { id = item.MetodoPagoID })
+                            </button> <span></span>
+                                      <button type="button" class="btn btn-primary">
+                                          @Html.ActionLink("Borrar", "Delete", new { id = item.MetodoPagoID })
+                                      </button>
+                        }
+                    }
+
+                <button type="button" class="btn btn-primary">
+                    @Html.ActionLink("Ver Detalles", "Details", new { id = item.MetodoPagoID })
+                </button>
+
+                   
                 </td>
             </tr>
         }

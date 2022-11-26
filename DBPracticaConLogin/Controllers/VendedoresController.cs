@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -132,36 +133,57 @@ namespace DBPracticaConLoginSearchYList.Controllers
             }
             base.Dispose(disposing);
         }
-        //public ActionResult SelectComision()
-        //{
-        //    List<SelectListItem> items = new List<SelectListItem>();
-        //    {
-        //        items.Add(new SelectListItem { Text = "Action", Value = "0" });
 
-        //        items.Add(new SelectListItem { Text = "Drama", Value = "1" });
+        //Export Function
+        public ActionResult exportaExcel()
+        {
 
-        //        items.Add(new SelectListItem { Text = "Comedy", Value = "2", Selected = true });
+            string filename = "Vendedores.csv";
+            string filepath = @"c:\tmp\" + filename;
+            StreamWriter sw = new StreamWriter(filepath);
+            sw.WriteLine("sep=,"); //separador columnas 
+            sw.WriteLine("ID, Nombre, Apellido, Salario, Cedula, Estado, Telefono"); //Encabezado  
 
-        //        items.Add(new SelectListItem { Text = "Science Fiction", Value = "3" });
+            foreach (var i in db.Vendedores.ToList())
+            {
 
-        //        ViewBag.Vendedores = items;
+                sw.WriteLine(i.VendedorId.ToString() + "," + i.Nombre + "," + i.Apellido + "," + i.Salario + "," + i.Cedula + "," + i.Activo + "," + i.Telefono);
 
-        //        return View();
+            }
 
+            sw.Close();
+            byte[] filedata = System.IO.File.ReadAllBytes(filepath);
+            string contentType = MimeMapping.GetMimeMapping(filepath);
 
-        //        //new SelectListItem{ Text="Seleccione por ciento de ventas", Value = "" },
-        //        //     new SelectListItem{ Text="3%", Value = "3" },
-        //        //     new SelectListItem{ Text="5%", Value = "5" },
-        //        //     new SelectListItem{ Text="15%", Value = "15" },
-        //        //     new SelectListItem{ Text="20%", Value = "0" }
+            var cd = new System.Net.Mime.ContentDisposition
 
+            {
 
+                FileName = filename,
+                Inline = true,
 
-
-        //    }
-        
-
-
+            };
+            Response.AppendHeader("Content-Disposition", cd.ToString());
+            return File(filedata, contentType);
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
 }

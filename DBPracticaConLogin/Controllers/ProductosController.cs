@@ -25,11 +25,12 @@ namespace DBPracticaConLoginSearchYList.Controllers
             || p.Categoria.Descripcion.StartsWith(Criterio)         
             || p.CodigoUPC.StartsWith(Criterio)).ToList());
         }
-            //var productos = db.Productos.Include(p => p.Categoria);
-            //return View(productos.ToList());
-        
+        //var productos = db.Productos.Include(p => p.Categoria);
+        //return View(productos.ToList());
+
 
         // GET: Productos/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)

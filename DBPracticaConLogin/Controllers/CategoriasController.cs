@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -17,7 +18,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
         // GET: Categorias
         public ActionResult Index(string Criterio = null)
         {
-
+            //Seachbar
             return View(db.Categoria.Where(p => Criterio == null || p.Descripcion.StartsWith(Criterio)).ToList());
         }
         //var productos = db.Productos.Include(p => p.Categoria);
@@ -39,6 +40,8 @@ namespace DBPracticaConLoginSearchYList.Controllers
         }
 
         // GET: Categorias/Create
+        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
@@ -61,7 +64,8 @@ namespace DBPracticaConLoginSearchYList.Controllers
             return View(categoria);
         }
 
-        // GET: Categorias/Edit/5
+        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -92,7 +96,8 @@ namespace DBPracticaConLoginSearchYList.Controllers
             return View(categoria);
         }
 
-        // GET: Categorias/Delete/5
+        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -126,5 +131,40 @@ namespace DBPracticaConLoginSearchYList.Controllers
             }
             base.Dispose(disposing);
         }
+        //Exportar a Excel 
+
+        public ActionResult exportaExcel()
+        {
+
+            string filename = "categorias.csv";
+            string filepath = @"c:\tmp\" + filename;
+            StreamWriter sw = new StreamWriter(filepath);
+            sw.WriteLine("sep=,"); //separador columnas 
+            sw.WriteLine("Codigo de Categoria, Categoria"); //Encabezado  
+
+            foreach (var i in db.Categoria.ToList())
+            {
+
+                sw.WriteLine(i.CategoriaID.ToString() + "," + i.Descripcion);
+
+            }
+
+            sw.Close();
+            byte[] filedata = System.IO.File.ReadAllBytes(filepath);
+            string contentType = MimeMapping.GetMimeMapping(filepath);
+
+            var cd = new System.Net.Mime.ContentDisposition
+
+            {
+
+                FileName = filename,
+                Inline = true,
+
+            };
+            Response.AppendHeader("Content-Disposition", cd.ToString());
+            return File(filedata, contentType);
+
+        }
+
     }
 }

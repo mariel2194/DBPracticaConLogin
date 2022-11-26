@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,6 +16,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
         private FacturacionProdGrupooEntities db = new FacturacionProdGrupooEntities();
 
         // GET: Clientes
+        [Authorize]
         public ActionResult Index(string Criterio = null)
         {
             //var clientes = db.Clientes.Include(c => c.MetodoPago);
@@ -26,6 +28,7 @@ namespace DBPracticaConLoginSearchYList.Controllers
         }
 
         // GET: Clientes/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -41,6 +44,8 @@ namespace DBPracticaConLoginSearchYList.Controllers
         }
 
         // GET: Clientes/Create
+        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ViewBag.MetodoPagoID = new SelectList(db.MetodoPago, "MetodoPagoID", "Descripcion");
@@ -66,6 +71,8 @@ namespace DBPracticaConLoginSearchYList.Controllers
         }
 
         // GET: Clientes/Edit/5
+        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -99,6 +106,8 @@ namespace DBPracticaConLoginSearchYList.Controllers
         }
 
         // GET: Clientes/Delete/5
+        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -132,5 +141,40 @@ namespace DBPracticaConLoginSearchYList.Controllers
             }
             base.Dispose(disposing);
         }
+        public ActionResult exportaExcel()
+        {
+
+            string filename = "productos.csv";
+            string filepath = @"c:\tmp\" + filename;
+            StreamWriter sw = new StreamWriter(filepath);
+            sw.WriteLine("sep=,"); //separador columnas 
+            sw.WriteLine("ID, Descripcion, Estado, Label UPC, Precio, Stock, Categoria"); //Encabezado  
+
+            foreach (var i in db.Productos.ToList())
+            {
+
+                sw.WriteLine(i.ProductoId.ToString() + "," + i.Descripcion + "," + i.Activo + "," + i.CodigoUPC + "," + i.Precio + "," + i.Stock + "," + i.Categoria.Descripcion);
+
+            }
+
+            sw.Close();
+            byte[] filedata = System.IO.File.ReadAllBytes(filepath);
+            string contentType = MimeMapping.GetMimeMapping(filepath);
+
+            var cd = new System.Net.Mime.ContentDisposition
+
+            {
+
+                FileName = filename,
+                Inline = true,
+
+            };
+            Response.AppendHeader("Content-Disposition", cd.ToString());
+            return File(filedata, contentType);
+
+        }
+
+
+
     }
 }
