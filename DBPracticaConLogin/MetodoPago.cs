@@ -23,9 +23,14 @@ namespace DBPracticaConLoginSearchYList
         }
     
         public int MetodoPagoID { get; set; }
+        [Required(ErrorMessage = "El metodo de pago es obligatorio")]
+
         public string Descripcion { get; set; }
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+
         [Display(Name = "Dias de Cobro")]
         public Nullable<int> CantidadDias { get; set; }
+        [Required(ErrorMessage = "Este campo es obligatorio")]
 
         [Display(Name = "Moneda Local")]
         public Nullable<bool> MonedaLocal { get; set; }

@@ -30,6 +30,8 @@ namespace DBPracticaConLoginSearchYList
         [Required(ErrorMessage = "El precio es obligatorio")]
         [DataType(DataType.Currency)]
 
+
+        [Range(1, 1000000, ErrorMessage = "Ingrese una cantidad mayor que 1")]
         public Nullable<decimal> Precio { get; set; }
         public Nullable<bool> Activo { get; set; }
         [Required(ErrorMessage = "El stock es obligatorio")]

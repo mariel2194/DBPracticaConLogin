@@ -30,7 +30,7 @@
         <div class="wrapper" id="wrapper" runat="server">
 
             <aside class="left-sidebar sidebar-dark" id="left-sidebar">
-                <div id="sidebar" class="sidebar sidebar-with-footer">
+                <div id="sidebar" class="sidebar">
 
                     <div class="app-brand">
                         <a href="~/Home">
@@ -40,7 +40,7 @@
                     </div>
 
 
-                    <div class="sidebar-left" data-simplebar style="height:100%;">
+                    <div class="sidebar-left data-simplebar" style="height:100%;">
                         <!-- sidebar menu -->
                         <ul class="nav sidebar-inner" id="sidebar-menu">
                             <li>
@@ -102,16 +102,18 @@
             <header class="main-header" id="header">
                 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#">
-                            <span class="page-title" id="sidebar-toggler" style="margin-left:25px;">
-                                <i class="bi bi-boxes radio">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-expanded="false">
+                            
+</button>    
+                        
+                        <span id="sidebar-toggler" style="margin-left:25px;">
+                            FACTURACION DE ARTICULOS |
+                        </span> 
 
-                                </i>FACTURACION DE ARTICULOS |
-                            </span>
-                        </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+
+                        
+
+
                         <div class="collapse navbar-collapse" id="navbarColor01">
                             <span class="dropdown-item">@Html.ActionLink("Usuario " + User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</span>
 
@@ -126,9 +128,9 @@
 
 
                                             <div class="dropdown-divider"></div>
-                                        <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-                                    @*<a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesion</a>*@
-</div>
+                                            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                                            @*<a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesion</a>*@
+                                        </div>
                                     </li>
                                 </ul>
 

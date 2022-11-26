@@ -16388,12 +16388,12 @@ label {
     position: fixed;
     top: 135px;
     right: 0;
-    background-color: #ffffff;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-    width: 35px;
+/*    background-color: #ffffff;
+*/    /*border-top-left-radius: 1rem;*/
+/*    border-bottom-left-radius: 1rem;
+*/    width: 35px;
     height: 30px;
-    border: 1px solid #e5e9f2;
+    
 }
 
     .right-sidebar .btn-right-sidebar-toggler i {

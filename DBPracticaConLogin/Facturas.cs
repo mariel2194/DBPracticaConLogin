@@ -24,10 +24,13 @@ namespace DBPracticaConLoginSearchYList
     
         public int FacturasID { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+
         public Nullable<int> VendedorId { get; set; }
         public Nullable<int> ClienteId { get; set; }
         public Nullable<int> MetodoPagoID { get; set; }
-    
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+
         public virtual Clientes Clientes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Detalle> Detalle { get; set; }

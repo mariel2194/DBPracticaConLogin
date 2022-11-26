@@ -15,11 +15,21 @@ namespace DBPracticaConLoginSearchYList
     public partial class Detalle
     {
         public int DetalleID { get; set; }
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+
         public Nullable<int> Cantidad { get; set; }
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+
         public Nullable<decimal> Precio { get; set; }
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+
         public Nullable<int> ProductoId { get; set; }
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+
         public Nullable<int> FacturasID { get; set; }
-    
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+
+
         public virtual Facturas Facturas { get; set; }
         public virtual Productos Productos { get; set; }
     }

@@ -60,9 +60,16 @@ namespace DBPracticaConLoginSearchYList
         [Required(ErrorMessage = "La cedula es obligatoria")]
        
         public string Cedula { get; set; }
+
+        [Range(15000,1500000, ErrorMessage = "Value should be greater than or equal to 1")]
+
         public Nullable<decimal> Salario { get; set; }
+
         public Nullable<bool> Activo { get; set; }
         public string Email { get; set; }
+
+        [RegularExpression(@"(1\s?)?(849\s?|829\s?|809)[\s\-]?\d{3}[\s\-]?\d{4}",
+                           ErrorMessage = "Digite un numero de telefono valido usando guiones (-).")]
         public string Telefono { get; set; }
          [Display(Name = "% Comision Por Venta")]
         public Nullable<decimal> ComisionPorVenta { get; set; }
