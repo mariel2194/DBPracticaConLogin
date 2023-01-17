@@ -7,12 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DBPracticaConLoginSearchYList
+namespace DBPracticaConLogin
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class MetodoPago
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,16 +22,8 @@ namespace DBPracticaConLoginSearchYList
         }
     
         public int MetodoPagoID { get; set; }
-        [Required(ErrorMessage = "El metodo de pago es obligatorio")]
-
         public string Descripcion { get; set; }
-        [Required(ErrorMessage = "Este campo es obligatorio")]
-
-        [Display(Name = "Dias de Cobro")]
         public Nullable<int> CantidadDias { get; set; }
-        [Required(ErrorMessage = "Este campo es obligatorio")]
-
-        [Display(Name = "Moneda Local")]
         public Nullable<bool> MonedaLocal { get; set; }
         public Nullable<bool> Activo { get; set; }
     

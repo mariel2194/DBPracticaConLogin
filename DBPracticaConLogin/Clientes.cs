@@ -7,12 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DBPracticaConLoginSearchYList
+namespace DBPracticaConLogin
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Clientes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,20 +21,10 @@ namespace DBPracticaConLoginSearchYList
         }
     
         public int ClienteId { get; set; }
-        [Display(Name = "Nombre Comercial")]
-        [Required(ErrorMessage = "El nombre es obligatorio")]
-
         public string Nombre_Comercial { get; set; }
         public string RNC { get; set; }
         public string Cedula { get; set; }
-        [Required(ErrorMessage = "El email de producto es obligatorio")]
-
         public string Email { get; set; }
-
-        [RegularExpression(@"(1\s?)?(849\s?|829\s?|809)[\s\-]?\d{3}[\s\-]?\d{4}",
-                          ErrorMessage = "Digite un numero de telefono valido usando guiones (-).")]
-        [Required(ErrorMessage = "El telefono es obligatorio")]
-
         public string Telefono { get; set; }
         public Nullable<bool> Activo { get; set; }
         public Nullable<int> MetodoPagoID { get; set; }

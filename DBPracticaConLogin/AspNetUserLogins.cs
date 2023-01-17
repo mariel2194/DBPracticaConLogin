@@ -12,15 +12,12 @@ namespace DBPracticaConLogin
     using System;
     using System.Collections.Generic;
     
-    public partial class Detalle
+    public partial class AspNetUserLogins
     {
-        public int DetalleID { get; set; }
-        public Nullable<int> Cantidad { get; set; }
-        public Nullable<decimal> Precio { get; set; }
-        public Nullable<int> ProductoId { get; set; }
-        public Nullable<int> FacturasID { get; set; }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
     
-        public virtual Facturas Facturas { get; set; }
-        public virtual Productos Productos { get; set; }
+        public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }

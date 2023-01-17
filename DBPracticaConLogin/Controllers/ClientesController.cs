@@ -8,6 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DBPracticaConLoginSearchYList;
+using DBPracticaConLogin;
+
 
 namespace DBPracticaConLoginSearchYList.Controllers
 {

@@ -12,25 +12,18 @@ namespace DBPracticaConLogin
     using System;
     using System.Collections.Generic;
     
-    public partial class Facturas
+    public partial class AspNetRoles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Facturas()
+        public AspNetRoles()
         {
-            this.Detalle = new HashSet<Detalle>();
+            this.AspNetUsers = new HashSet<AspNetUsers>();
         }
     
-        public int FacturasID { get; set; }
-        public Nullable<System.DateTime> Fecha { get; set; }
-        public Nullable<int> VendedorId { get; set; }
-        public Nullable<int> ClienteId { get; set; }
-        public Nullable<int> MetodoPagoID { get; set; }
-        public Nullable<int> Total { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     
-        public virtual Clientes Clientes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Detalle> Detalle { get; set; }
-        public virtual MetodoPago MetodoPago { get; set; }
-        public virtual Vendedores Vendedores { get; set; }
+        public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }
     }
 }
